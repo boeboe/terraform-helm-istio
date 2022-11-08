@@ -6,10 +6,7 @@
 [![Open Source Helpers](https://www.codetriage.com/boeboe/terraform-helm-istio/badges/users.svg)](https://www.codetriage.com/boeboe/terraform-helm-istio)
 [![MIT Licensed](https://img.shields.io/badge/license-MIT-green.svg)](https://tldrlegal.com/license/mit-license)
 
-Terraform module will deploy [istio](https://istio.io) on any kubernetes cluster, using the official [helm charts](https://artifacthub.io/packages/search?org=istio).
-
-
-
+This terraform module will deploy [istio](https://istio.io) on any kubernetes cluster, using the official [helm charts](https://artifacthub.io/packages/search?org=istio).
 
 
 ## Usage
