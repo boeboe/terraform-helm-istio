@@ -8,6 +8,12 @@
 
 This terraform module will deploy [istio](https://istio.io) on any kubernetes cluster, using the official [helm charts](https://artifacthub.io/packages/search?org=istio).
 
+| Helm Chart | Repo | Default Values |
+|------------|------|--------|
+| base | [repo](https://artifacthub.io/packages/helm/istio-official/base) | [values](https://artifacthub.io/packages/helm/istio-official/base?modal=values) |
+| cni | [repo](https://artifacthub.io/packages/helm/istio-official/cni) | [values](https://artifacthub.io/packages/helm/istio-official/cni?modal=values) |
+| istiod | [repo](https://artifacthub.io/packages/helm/istio-official/istiod) | [values](https://artifacthub.io/packages/helm/istio-official/istiod?modal=values) |
+| gateway | [repo](https://artifacthub.io/packages/helm/istio-official/gateway) | [values](https://artifacthub.io/packages/helm/istio-official/gateway?modal=values) |
 
 ## Usage
 
