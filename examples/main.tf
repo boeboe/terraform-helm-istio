@@ -29,3 +29,24 @@ module "istio" {
   istio_istiod_settings  = local.istio_istiod_settings
   istio_gateway_settings = local.istio_gateway_settings
 }
+
+output "istio_istiod_helm_metadata" {
+  description = "block status of the istio istiod helm release"
+  value = module.istio.istio_istiod_helm_metadata[0]
+}
+
+data "kubernetes_service" "gateway" {
+  metadata {
+    name = "istio-gateway"
+    namespace = "istio-system"
+  }
+
+  depends_on = [
+    module.istio
+  ]
+}
+
+output "gateway_loadbalancer_ip" {
+  description = "external loadbalancer ip address of ingress gateway"
+  value = data.kubernetes_service.gateway.status[0].load_balancer[0].ingress[0].ip
+}

@@ -17,7 +17,7 @@ locals {
 resource "helm_release" "base" {
   count = local.istio_base_enabled ? 1 : 0
 
-  name             = "base"
+  name             = "istio-base"
   repository       = local.istio_helm_repo
   chart            = "base"
   version          = local.istio_version
@@ -36,7 +36,7 @@ resource "helm_release" "base" {
 resource "helm_release" "cni" {
   count = local.istio_cni_enabled ? 1 : 0
 
-  name       = "cni"
+  name       = "istio-cni"
   repository = local.istio_helm_repo
   chart      = "cni"
   version    = local.istio_version
@@ -58,7 +58,7 @@ resource "helm_release" "cni" {
 resource "helm_release" "istiod" {
   count = local.istio_istiod_enabled ? 1 : 0
 
-  name       = "istiod"
+  name       = "istio-istiod"
   repository = local.istio_helm_repo
   chart      = "istiod"
   version    = local.istio_version
@@ -78,9 +78,9 @@ resource "helm_release" "istiod" {
 }
 
 resource "helm_release" "gateway" {
-  # count = local.istio_gateway_enabled ? 1 : 0
+  count = local.istio_gateway_enabled ? 1 : 0
 
-  name       = "gateway"
+  name       = "istio-gateway"
   repository = local.istio_helm_repo
   chart      = "gateway"
   version    = local.istio_version
@@ -95,6 +95,7 @@ resource "helm_release" "gateway" {
   }
 
   depends_on = [
+    helm_release.base,
     helm_release.istiod
   ]
 }

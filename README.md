@@ -30,7 +30,7 @@ provider "helm" {
 
 module "istio" {
   source  = "boeboe/istio/helm"
-  version = "0.0.1"
+  version = "0.0.2"
 
   istio_version = "1.15.3"
 
@@ -50,7 +50,6 @@ Check the [examples](examples) for more details.
 
 ## Inputs
 
-
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|----------|
 | istio_version | istio version | string | - | true |
@@ -65,14 +64,30 @@ Check the [examples](examples) for more details.
 | istio_gateway_settings | istio gateway settings | map | {} | false |
 | istio_gateway_enabled | enable helm install of istio gateway | bool | true | false |
 
-
-
 ## Outputs
 
 | Name | Description | Type |
 |------|-------------|------|
-|||
+| istio_base_helm_metadata | block status of the istio base helm release | list |
+| istio_cni_helm_metadata | block status of the istio cni helm release | list |
+| istio_istiod_helm_metadata | block status of the istio istiod helm release | list |
+| istio_gateway_helm_metadata | block status of the istio gateway helm release | list |
 
+
+Example output:
+
+``` hcl
+istio_istiod_helm_metadata = {
+  "app_version" = "1.15.3"
+  "chart" = "istiod"
+  "name" = "istio-istiod"
+  "namespace" = "istio-system"
+  "revision" = 1
+  "values" = "{\"pilot\":{\"autoscaleMax\":4,\"autoscaleMin\":2}}"
+  "version" = "1.15.3"
+}
+
+```
 
 ## More information
 

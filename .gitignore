@@ -8,3 +8,5 @@
 **/*.hcl
 # Kubeconfig
 **/kubeconfig.yaml
+# VSCode
+.vscode/
