@@ -1,5 +1,5 @@
 locals {
-  istio_version        = "1.15.3"
+  istio_version        = var.istio_version
   istio_helm_namespace = var.istio_helm_namespace
   istio_helm_repo      = var.istio_helm_repo
 
